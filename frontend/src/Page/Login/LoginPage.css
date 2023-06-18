@@ -52,6 +52,17 @@ body {
     font-size: 40px;
   }
   
+  .div-inner2 {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 350px;
+    height: 60px;
+    margin: 550px auto;
+    border: 1px solid rgb(196, 196, 196);
+    text-align: center;
+  }
+
   
   
   .input-tel,.input-name {
@@ -63,7 +74,7 @@ body {
     font-family: 'HANAMDAUM';
   }
   
-  .button-login  {
+  .button-login,.button-register  {
     box-sizing: content-box;
     width: 250px;
     border: 1px solid gray;
@@ -77,4 +88,7 @@ body {
     font-family: var(--font-NotoSerifKR);
   }
  
+  .button-register {
+    margin-top: 10px;
+  }
   

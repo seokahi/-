@@ -1,12 +1,15 @@
 import React, { useState} from 'react';
 import axios from "axios";
 import './LoginPage.css';
+import Join from '../Join/JoinPage';
 
 const port = process.env.REACT_APP_PORT || 3001;
 
 function LoginPage() {
     const [Telephone, setTelephone] = useState("");
     const [Name, setName] = useState("");
+    const [isOpen, setIsOpen] = useState(false)
+
     const onTelephoneHandler = (event) => {
         setTelephone(event.currentTarget.value);
     }
@@ -14,8 +17,24 @@ function LoginPage() {
         setName(event.currentTarget.value);
     }
 
+    const openModalHandler = (event) => {
+        event.preventDefault();
+        setIsOpen(!isOpen) 
+    };
+
+    const validatePhoneNumber = (phoneNumber) => {  // 유효성 검사 함수
+        const pattern = /^010-\d{4}-\d{4}$/;
+        return pattern.test(phoneNumber);
+    }
+
+
     const handlelogin = async(event) => {
         event.preventDefault();
+        if (!validatePhoneNumber(Telephone)) {  // 유효성 검사
+            alert('전화번호 형식이 올바르지 않습니다!!!!');
+            return;
+        }
+
         try {
             await axios.post(`http://localhost:${port}/login`, {
                 userName: Name,
@@ -41,6 +60,12 @@ function LoginPage() {
                     
                     <button className='button-login' formAction='' onClick={handlelogin}>로그인</button>
                     
+                </section>
+            </form>
+            <form className='div-inner2'>
+                <section className='sec-container'>
+                <button className='button-register' formAction='' onClick={openModalHandler}>휴대폰 인증</button>
+                {isOpen ? <Join openModalHandler={openModalHandler} /> : null}
                 </section>
             </form>
 
