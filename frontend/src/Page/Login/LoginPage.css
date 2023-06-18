@@ -1,0 +1,80 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+  }
+  
+  
+  
+  :root {
+      --font-Notoserif: "Notoserif";
+      --font-NotoSerifKR: "Noto Serif KR", serif;
+  }
+  
+  
+  
+  @font-face {
+    font-family: "LeferiPoint-SpecialItalicA";
+    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/LeferiPoint-SpecialItalicA.woff")
+      format("woff");
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'HANAMDAUM';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/HANAMDAUM.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .div-inner {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 350px;
+    height: 400px;
+    margin: 100px auto;
+    border: 1px solid rgb(196, 196, 196);
+    text-align: center;
+  }
+  .header-title {
+    padding-top: 30px;
+      font-family: var(--font-NotoSerifKR);
+    font-size: 40px;
+  }
+  
+  
+  
+  .input-tel,.input-name {
+    border: 1px solid rgb(196, 196, 196);
+    width: 250px;
+    padding: 14px;
+    background-color: rgb(250, 247, 247);
+    margin-top: 25px;
+    font-family: 'HANAMDAUM';
+  }
+  
+  .button-login  {
+    box-sizing: content-box;
+    width: 250px;
+    border: 1px solid gray;
+    background-color: gray;
+    padding: 8px 14px;
+    margin-top: 50px;
+    text-align: center;
+    color: white;
+    font-weight: 900;
+    border-radius: 10px;
+    font-family: var(--font-NotoSerifKR);
+  }
+ 
+  
