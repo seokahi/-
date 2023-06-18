@@ -1,7 +1,9 @@
 import React, { useState} from 'react';
 import axios from "axios";
 import './LoginPage.css';
-const port = process.env.port || 3001;
+
+const port = process.env.REACT_APP_PORT || 3001;
+
 function LoginPage() {
     const [Telephone, setTelephone] = useState("");
     const [Name, setName] = useState("");
