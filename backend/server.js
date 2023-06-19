@@ -42,6 +42,40 @@ app.post("/login", (req, res) => {
       );
     });
 
+app.post("/register", (req, res) => {
+    const telephone = req.body.userPhone;
+    const name = req.body.userName;
+    console.log("여기까지 왔니?");
+    connection.query(
+        "select * from user where userPhone=? and userName=?",
+        [telephone,name],
+        function (err, rows, fields) {
+        if (err) {
+            return res.status(500).json({ error: "DB 조회 실패" });
+        } else {
+            if (rows.length === 0) {
+                connection.query(
+                    "INSERT INTO user (userPhone, userName) VALUES (?, ?)",
+                    [telephone, name],
+                    (err, rows) => {
+                      if (err) {
+                        console.error('DB 유저 생성 실패', insertError);
+                        return;
+                      }
+            
+                      console.log('DB 유저 생성 성공', rows);
+                      return res.status(200).json({ success: true, data: rows });
+                    }
+                  );
+            } else {
+            console.log("DB 유저 존재");
+            return res.status(500).json({ error: "DB 유저 생성 실패" });
+            }
+        }
+        }
+    );
+    });
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });

@@ -1,0 +1,98 @@
+.div-modal-container {
+    z-index: 1; 
+    position: fixed;
+    display : flex;
+    justify-content : center;
+    align-items : center;
+    background-color: rgba(0,0,0,0.4);
+    border-radius: 10px;
+    top : 0;
+    left : 0;
+    right : 0;
+    bottom : 0;
+  }
+  
+  .div-modal-inner-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  
+    width: 500px;
+    height: 400px;
+    background-color: #ffffff;
+    position: relative;
+  
+  }
+  
+  .button-modal {
+    color:black;
+    font-size: 20px;
+    text-decoration: none;
+    background-color: white;
+    border: none;
+    padding: 20px;
+    border-radius: 30px;
+    cursor: grab;
+    border-radius: 10px;
+    text-decoration: none;
+    margin: 10px;
+    padding: 5px 10px;
+    width: 60px;
+    height: 60px;
+    display : flex;
+    justify-content : center;
+    align-items : center;
+    position: absolute;
+    left:420px;
+    right: 0px;
+  }
+  
+  .button-input-modal-tel {
+    position: absolute;
+    top:180px;
+    font-family: 'HANAMDAUM';
+    width:370px;
+    border: 1px solid rgb(196, 196, 196);
+    padding: 14px;
+    background-color: rgb(250, 247, 247);
+    margin-top: 8px;
+  }
+  .p-content {
+    position: absolute;
+    top:60px;
+    font-family: 'HANAMDAUM';
+  }
+  
+  .div-modal-tel {
+    display: flex;
+    position: absolute;
+    top:90px;
+  }
+  
+  .div-modal-tel .input-modal-user{
+    width: 50px;
+  }
+  .div-modal-tel .input-modal-user{
+    width: 80px;
+  }
+  
+  .button-modal-tel {
+    border: 1px solid rgb(196, 196, 196);
+    width: 75px;
+    padding: 14px;
+    background-color: rgb(250, 247, 247);
+    margin-top: 25px;
+    font-family: 'HANAMDAUM';
+  }
+  
+  .p-sec-content {
+    position: absolute;
+    top:250px;
+    font-family: 'HANAMDAUM';
+  }
+  
+  .div-modal-certification {
+    position: absolute;
+    top:280px;
+  }
+  
