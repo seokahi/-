@@ -1,0 +1,84 @@
+:root {
+    --font-Notoserif: "Notoserif";
+    --font-NotoSerifKR: "Noto Serif KR", serif;
+}
+
+.div-image-container {
+    margin:100px auto;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 580px;
+    height: 650px;
+    text-align: center;
+    font-family: 'HANAMDAUM';
+  }
+  
+  .div-title {
+    border-bottom: 1px solid gray;
+  }
+  
+  .div-title p {
+    display: inline-block;
+    padding-right: 360px;
+  }
+  
+  .div-title button {
+    border: none;
+    background-color: white;
+    color:rgb(139, 22, 248);
+    font-weight: bolder;
+    font-family: 'HANAMDAUM';
+    font-family: var(--font-NotoSerifKR);
+}
+  
+  
+  
+  .p-image-title {
+    margin:0;
+    padding:6px;
+    text-align: left;
+    font-family: var(--font-NotoSerifKR);
+  }
+  
+  .svg-image-upload {
+    margin-top: 180px;
+  }
+  
+  .div-label-container {
+    width: 150px;
+    margin: 0 auto;
+  }
+  
+  .p-image-select {
+    margin-bottom: 30px;
+    font-family: var(--font-NotoSerifKR);
+  }
+  .label-image {
+    padding:8px 20px;
+    background-color: #3AB4F0;
+    color:white;
+    border-radius: 10px;
+    font-family: var(--font-NotoSerifKR);
+  }
+  
+  .container-one {
+    box-sizing: content-box;
+    position:'relative';
+    z-index:1;
+  
+    border-right: 1px solid gray;
+    height: 620px;
+  }
+  
+  .container-two {
+    position: relative;
+    top:-340px;
+    z-index: 2;
+  }
+  
+  
+  .image-upload {
+    width: 350px;
+    height: 610px;
+    object-fit: contain;
+  }
