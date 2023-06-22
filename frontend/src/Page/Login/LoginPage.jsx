@@ -2,12 +2,14 @@ import React, { useState} from 'react';
 import axios from "axios";
 import './LoginPage.css';
 import Join from '../Join/JoinPage';
-
+import { useNavigate } from "react-router-dom";
+import { useCookies } from 'react-cookie';
 const port = process.env.REACT_APP_PORT || 3001;
-
 function LoginPage() {
+    const navigate = useNavigate();
     const [Telephone, setTelephone] = useState("");
     const [Name, setName] = useState("");
+    const [cookies, setCookie] = useCookies(['telephone', 'name']);
     const [isOpen, setIsOpen] = useState(false)
 
     const onTelephoneHandler = (event) => {
@@ -30,17 +32,24 @@ function LoginPage() {
 
     const handlelogin = async(event) => {
         event.preventDefault();
+        
         if (!validatePhoneNumber(Telephone)) {  // 유효성 검사
             alert('전화번호 형식이 올바르지 않습니다!!!!');
             return;
         }
 
         try {
-            await axios.post(`http://localhost:${port}/login`, {
+            const inform = await axios.post(`http://localhost:${port}/login`, {
                 userName: Name,
                 userPhone: Telephone,
             });
             alert('로그인 성공!!!');
+            const telephone = inform.data.data[0].userPhone;
+            const name = inform.data.data[0].userName;
+            setCookie('telephone', telephone);
+            setCookie('name', name);
+            navigate('/post');
+            
         } catch (error) {
             console.error('Error registering user:', error);
             alert('로그인 실패!!! 휴대폰 인증을 해주세요!!!!!'); // 실패 메세지 설정
