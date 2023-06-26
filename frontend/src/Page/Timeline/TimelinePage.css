@@ -1,0 +1,12 @@
+.timeline{
+    /* 부모요소 timeline, 이 부모요소 hompage도 flex로 띄우면 충돌해서 적용안돼  */
+     display: flex;
+     flex-direction: row;
+     justify-content: center;
+     max-width: 800px;
+     margin: 0 auto;
+     padding: 20px;
+     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+ }
+ 
+ 
