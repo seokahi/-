@@ -33,9 +33,9 @@ function TimelinePage()  {
                 console.error("Error fetching posts:", error);
             });
     }, []);
-  // const hadlePostbutton =()=> {
-  //   navigate('/post')
-  // }
+  const hadlePostbutton =()=> {
+    navigate('/post')
+  }
 
   // const handleLetterbutoon =()=>{
   //   navigate('/letter')

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Cookies } from "react-cookie";
 
-import "./PostPage.css";
+import "./UploadPage.css";
 const port = process.env.REACT_APP_PORT || 3001;
 const cookies = new Cookies();
 const ImageInput = () => {
