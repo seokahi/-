@@ -9,8 +9,10 @@ import AddPhotoAlternateOutlinedIcon from '@mui/icons-material/AddPhotoAlternate
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-// import { ToastNotification } from '../Toast/ToastNotification';
+import Post from '../Post/PostPage';
 
+// import { ToastNotification } from '../Toast/ToastNotification';
+const port = process.env.REACT_APP_PORT || 3001;
 //우리가 만든 고유한 포스트
 function TimelinePage()  {
 
@@ -24,9 +26,11 @@ function TimelinePage()  {
     }, [count]);
 
     useEffect(() => {
-        axios.get("/api/timeline")
+        axios.get(`http://localhost:${port}/timeline`)
             .then(response => {
-                const sortedPosts = response.data.sort((a, b) => b.post_id - a.post_id);
+                console.log(response);
+                const sortedPosts = response.data.data.sort((a, b) => b.post_id - a.post_id);
+                console.log(sortedPosts);
                 setPosts(sortedPosts);
             })
             .catch(error => {
@@ -53,14 +57,14 @@ function TimelinePage()  {
         <EmailOutlinedIcon fontSize="large"/> 
         </div>
     </div>
-    {/* <div className="timeline">
+    <div className="timeline">
       <div className="timeline_left">
         <div className="timeline_post">
           {posts.map(post =>(
             <Post
-            post_id={post.post_id} // 프론트엔드와 백엔드 간의 고유한 식별자(ID)
+            post_id={post.id} // 프론트엔드와 백엔드 간의 고유한 식별자(ID)
             // userPhone={post.userPhone}
-            userName={post.userName}
+            // userName={post.userName}
             postName={post.postName}
             // likes={post.likes}
             postTime={post.postTime}
@@ -68,12 +72,12 @@ function TimelinePage()  {
             posts={posts} />
           ))}
         </div>
-      </div> */}
-      {/* <div className='timeline_right'>
+      </div> 
+       <div className='timeline_right'>
       </div>
-      {toastState === true ? (<ToastNotification setToastState={setToastState} />) : null} */}
+      {/* {toastState === true ? (<ToastNotification setToastState={setToastState} />) : null} */}
     </div>
-    // </div>
+    </div>
   )
 }
 
