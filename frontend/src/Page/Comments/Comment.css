@@ -1,0 +1,7 @@
+.comment-container {
+    display: flex;
+    flex-direction: column; /*세로방향 배치 */
+    align-items: center; /* 세로 방향 가운데 정렬 */
+    gap: 20px; /* 아이템 사이의 간격 설정 */
+  }
+  
