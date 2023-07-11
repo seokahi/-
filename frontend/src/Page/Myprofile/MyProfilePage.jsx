@@ -25,7 +25,16 @@ function MyProfile() {
     const handleDeleteClick = () => {
         setIsDeleteModalOpen(true);
     };
-    
+
+    const [selectedPosts, setSelectedPosts] = useState([]);
+    const togglePostSelection = (postId) => {
+        if (selectedPosts.includes(postId)) {
+            setSelectedPosts(selectedPosts.filter((id) => id !== postId));
+        } else {
+            setSelectedPosts([...selectedPosts, postId]);
+        }
+    };
+
     return (
         <div>
             <div className='app-header'>
@@ -61,7 +70,19 @@ function MyProfile() {
                     </div>
                 </div>
 
-
+                <div className="user-feed">
+                    <div className="grid-container">
+                        {myPosts.map((post) => (
+                            <div
+                                key={post.id}
+                                className={`grid-item ${selectedPosts.includes(post.id) ? "selected" : ""}`}
+                                onClick={() => togglePostSelection(post.id)}
+                            >
+                                <img src={post.imageUrl} alt={`게시글 ${post.id}`} />
+                            </div>
+                        ))}
+                    </div>
+                </div>
 
 
             </div>
