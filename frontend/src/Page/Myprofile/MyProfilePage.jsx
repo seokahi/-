@@ -84,7 +84,11 @@ function MyProfile() {
                     </div>
                 </div>
 
-
+                <NicknameModal
+                    isOpen={isModalOpen}
+                    onRequestClose={() => setIsModalOpen(false)}
+                    onNicknameChange={handleNicknameChange}
+                />                
             </div>
 
         </div>
