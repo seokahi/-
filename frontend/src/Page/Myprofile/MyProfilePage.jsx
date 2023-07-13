@@ -26,6 +26,13 @@ function MyProfile() {
         setIsDeleteModalOpen(true);
     };
 
+    const handleDeleteConfirm = () => {
+        // 여기에 회원 탈퇴 로직을 추가(백엔드랑 같이)
+        setEditedName("");
+        setIsModalOpen(false);
+        setIsDeleteModalOpen(false);
+    };
+
     const [selectedPosts, setSelectedPosts] = useState([]);
     const togglePostSelection = (postId) => {
         if (selectedPosts.includes(postId)) {
@@ -88,6 +95,11 @@ function MyProfile() {
                     isOpen={isModalOpen}
                     onRequestClose={() => setIsModalOpen(false)}
                     onNicknameChange={handleNicknameChange}
+                />
+                <ConfirmModal
+                    isOpen={isDeleteModalOpen}
+                    onRequestClose={() => setIsDeleteModalOpen(false)}
+                    onConfirm={handleDeleteConfirm}
                 />                
             </div>
 
