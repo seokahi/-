@@ -1,0 +1,33 @@
+.list {
+    width: 800px;
+    list-style: none;
+    margin: 0 auto;
+    max-width: 800px;
+    padding: 20px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.list-letter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+}
+.list-name {
+    margin-right: 350px;
+}
+
+.list-name {
+    font-size: 12px;
+    font-weight: bolder;
+}
+
+.circle {
+    margin-right: 5px;
+    width: 10px;
+    height: 10px;
+    border: 1px solid rgb(192, 137, 236);
+    border-radius: 50%;
+    background-color: rgb(192, 137, 236);
+}
