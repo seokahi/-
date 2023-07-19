@@ -6,6 +6,7 @@ import ImageInput from './Page/Upload/UploadPage';
 import Comment from './Page/Comments/CommentPage';
 import MyProfile from './MyProfile/MyProfilePage'
 import Chat from './Page/ChatPage';
+import Letter from './Page/LetterPage';
 function App() {
   return (
     <BrowserRouter>
@@ -16,6 +17,7 @@ function App() {
           <Route path="/comments/:post_id" element={<Comment/>} />
           <Route path="/myprofile" element={<MyProfile />} />
           <Route path="/chat" element={<Chat/>} />
+          <Route path="/letter" element={<Letter/>} />
       </Routes>
     </BrowserRouter>
 
