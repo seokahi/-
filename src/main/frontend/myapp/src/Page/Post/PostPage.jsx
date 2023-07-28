@@ -10,9 +10,27 @@ const ImageInput = () => {
     setImgFile(prev => [...prev, URL.createObjectURL(upload.current.files[0])]);
   };
 
-  const handleImage = ()=> {
-    
-  }
+  const handleImage = async (event) => {
+    event.preventDefault();
+    try {
+      const file = upload.current.files[0];
+
+      const formData = new FormData();
+      formData.append('file', file);
+
+      await axios.post('/api/post', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+
+      alert('게시 완료!!!');
+      navigate('/timeline');
+    } catch (error) {
+      console.error('게시 실패!!', error);
+      alert('게시 실패!!');
+    }
+  };
   return (
     <div className="div-image-container">
       <div className='div-title'>
