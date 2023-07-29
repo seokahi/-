@@ -1,23 +1,20 @@
 import React, { useState} from 'react';
-import axios from "axios";
+import Modal from './ModalPage';
 import './LoginPage.css';
 import Join from '../Join/JoinPage';
-import { useNavigate } from "react-router-dom";
-import { useCookies } from 'react-cookie';
-const port = process.env.REACT_APP_PORT || 3001;
+
+import { useNavigate } from 'react-router-dom';
+
 function LoginPage() {
-    const navigate = useNavigate();
     const [Telephone, setTelephone] = useState("");
-    const [Name, setName] = useState("");
-    const [cookies, setCookie] = useCookies(['telephone', 'name']);
+    localStorage.removeItem("count");
+    const navigate = useNavigate(); 
     const [isOpen, setIsOpen] = useState(false)
 
     const onTelephoneHandler = (event) => {
         setTelephone(event.currentTarget.value);
     }
-    const onNameHandler = (event) => {
-        setName(event.currentTarget.value);
-    }
+
 
     const openModalHandler = (event) => {
         event.preventDefault();
@@ -29,41 +26,16 @@ function LoginPage() {
         return pattern.test(phoneNumber);
     }
 
-
-    const handlelogin = async(event) => {
-        event.preventDefault();
+    const handlelogin = ()=> {
         
-        if (!validatePhoneNumber(Telephone)) {  // 유효성 검사
-            alert('전화번호 형식이 올바르지 않습니다!!!!');
-            return;
-        }
-
-        try {
-            const inform = await axios.post(`http://localhost:${port}/login`, {
-                userName: Name,
-                userPhone: Telephone,
-            });
-            alert('로그인 성공!!!');
-            const telephone = inform.data.data[0].userPhone;
-            const name = inform.data.data[0].userName;
-            setCookie('telephone', telephone);
-            setCookie('name', name);
-            navigate('/post');
-            
-        } catch (error) {
-            console.error('Error registering user:', error);
-            alert('로그인 실패!!! 휴대폰 인증을 해주세요!!!!!'); // 실패 메세지 설정
-        }
     }
-
+    
     
     return (
         <div className='div-outer'>
             <form className='div-inner'>
                 <section className='sec-container'>
                     <h1 className='header-title'>인스타그랜마</h1>
-                    <input className='input-name' type='name' value={Name} onChange={onNameHandler} placeholder='이름'/>
-                    <br/>
                     <input className='input-tel' type='tel' value={Telephone} onChange={onTelephoneHandler} placeholder='전화번호'/>
                     <br/>
                     
@@ -74,7 +46,7 @@ function LoginPage() {
             <form className='div-inner2'>
                 <section className='sec-container'>
                 <button className='button-register' formAction='' onClick={openModalHandler}>휴대폰 인증</button>
-                {isOpen ? <Join openModalHandler={openModalHandler} /> : null}
+                {isOpen ? <Modal openModalHandler={openModalHandler} /> : null}
                 </section>
             </form>
 
