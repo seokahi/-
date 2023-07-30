@@ -1,8 +1,7 @@
 import React, { useState} from 'react';
 import Modal from './ModalPage';
 import './LoginPage.css';
-import Join from '../Join/JoinPage';
-
+import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 
 function LoginPage() {
@@ -26,8 +25,18 @@ function LoginPage() {
         return pattern.test(phoneNumber);
     }
 
-    const handlelogin = ()=> {
-        
+    const handlelogin = async(event)=> {
+        event.preventDefault();
+        try {
+            await axios.post('/api/login', {
+                userPhone: Telephone,
+            });
+            alert('로그인 성공!!!');
+            navigate('/timeline');
+        } catch (error) {
+            console.error('Error registering user:', error);
+            alert('로그인 실패!!! 휴대폰 인증을 해주세요!!!!!'); // 실패 메세지 설정
+        }
     }
     
     
