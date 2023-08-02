@@ -1,11 +1,13 @@
 import React, { useState,useEffect } from "react";
-import Timer from "./TimerPage";
+import { useNavigate } from 'react-router-dom';
+import axios from "axios";
 
 function Modal(props) {
     const [Telephone, setTelephone] = useState("");
     const [UserName, setUserName] = useState("");
     const [Certnum, setCertnum] = useState("");
     const [Counter,setCounter] = useState(false);
+    const navigate = useNavigate(); // navigate 함수를 초기화합니다
     const onTelephoneHandler = (event) => {
         setTelephone(event.currentTarget.value);
     }
@@ -19,9 +21,33 @@ function Modal(props) {
         setCounter(false);
     }
 
+    const validatePhoneNumber = (phoneNumber) => {  // 유효성 검사 함수
+        const pattern = /^010-\d{4}-\d{4}$/;
+        return pattern.test(phoneNumber);
+    }
+    const handleAuthlogin = async(event) => {
+        event.preventDefault();
+        if (!validatePhoneNumber(Telephone)) {  // 유효성 검사
+            alert('전화번호 형식이 올바르지 않습니다!!!!');
+            return;
+        }
 
-    const handleAuthlogin = () => {
+        if (Certnum !== "0000") {
+            alert('인증번호가 올바르지 않습니다.'); // 인증번호가 0000이 아닐 때 경고창 표시
+            return;
+        }
 
+        try {
+            await axios.post('/api/register', {
+                userName: UserName,
+                userPhone: Telephone,
+            });
+            alert('회원가입을 축하합니다!');
+            navigate('/');
+        } catch (error) {
+            console.error('Error registering user:', error);
+            alert('이미 등록되어 있는 회원입니다.');
+        }
     }
 
 
