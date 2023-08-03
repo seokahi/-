@@ -20,11 +20,6 @@ function LoginPage() {
         setIsOpen(!isOpen) 
     };
 
-    const validatePhoneNumber = (phoneNumber) => {  // 유효성 검사 함수
-        const pattern = /^010-\d{4}-\d{4}$/;
-        return pattern.test(phoneNumber);
-    }
-
     const handlelogin = async(event)=> {
         event.preventDefault();
         try {
