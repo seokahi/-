@@ -1,8 +1,6 @@
 import React, {useEffect, useState} from 'react'
-// import Post from './posts/Post'
 
 import "./TimelinePage.css"
-// import '../Common/Common.css';
 import EmailOutlinedIcon from '@mui/icons-material/EmailOutlined';
 import LightbulbOutlinedIcon from '@mui/icons-material/LightbulbOutlined';
 import AddPhotoAlternateOutlinedIcon from '@mui/icons-material/AddPhotoAlternateOutlined';
@@ -11,9 +9,6 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Post from '../Post/PostPage';
 
-// import { ToastNotification } from '../Toast/ToastNotification';
-const port = process.env.REACT_APP_PORT || 3001;
-//우리가 만든 고유한 포스트
 function TimelinePage()  {
 
     const navigate = useNavigate();
@@ -26,24 +21,22 @@ function TimelinePage()  {
     }, [count]);
 
     useEffect(() => {
-        axios.get(`http://localhost:${port}/timeline`)
-            .then(response => {
-                console.log(response);
-                const sortedPosts = response.data.data.sort((a, b) => b.post_id - a.post_id);
-                console.log(sortedPosts);
-                setPosts(sortedPosts);
-            })
-            .catch(error => {
-                console.error("Error fetching posts:", error);
-            });
-    }, []);
+      axios.get("/api/timeline")
+          .then(response => {
+              const sortedPosts = response.data.sort((a, b) => b.post_id - a.post_id);
+              setPosts(sortedPosts);
+          })
+          .catch(error => {
+              console.error("Error fetching posts:", error);
+          });
+  }, []);
   const hadlePostbutton =()=> {
     navigate('/post')
   }
 
-  // const handleLetterbutoon =()=>{
-  //   navigate('/letter')
-  // }
+  const handleLetterbutoon =()=>{
+    navigate('/letter')
+  }
 
   return (
     <div className="app">
@@ -52,9 +45,9 @@ function TimelinePage()  {
         <div className='header-icons'>
         <AccountCircleOutlinedIcon fontSize="large"
           onClick={() => window.location.href = "/myprofile"}/>
-        <button className='header-button' ><AddPhotoAlternateOutlinedIcon fontSize='large' /></button>
+        <button className='header-button' onClick={hadlePostbutton}><AddPhotoAlternateOutlinedIcon fontSize='large' /></button>
         <LightbulbOutlinedIcon fontSize="large"/>
-        <EmailOutlinedIcon fontSize="large"/> 
+        <EmailOutlinedIcon fontSize="large" onClick={handleLetterbutoon}/> 
         </div>
     </div>
     <div className="timeline">
@@ -75,7 +68,6 @@ function TimelinePage()  {
       </div> 
        <div className='timeline_right'>
       </div>
-      {/* {toastState === true ? (<ToastNotification setToastState={setToastState} />) : null} */}
     </div>
     </div>
   )
