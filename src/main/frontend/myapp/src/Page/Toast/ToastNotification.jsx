@@ -1,6 +1,6 @@
 // ToastNotification.js
 import React, { useState, useEffect } from "react";
-
+import "./Toast.css";
 
 function ToastNotification(props) {
     const count = localStorage.getItem('count');
