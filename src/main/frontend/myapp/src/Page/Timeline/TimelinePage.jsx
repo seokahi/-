@@ -8,6 +8,7 @@ import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Post from '../Post/PostPage';
+import { ToastNotification } from '../Toast/ToastNotification';
 
 function TimelinePage()  {
 
@@ -68,6 +69,7 @@ function TimelinePage()  {
       </div> 
        <div className='timeline_right'>
       </div>
+      {toastState === true ? (<ToastNotification setToastState={setToastState} />) : null}
     </div>
     </div>
   )
