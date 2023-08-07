@@ -10,7 +10,7 @@ const ImageInput = () => {
     setImgFile(prev => [...prev, URL.createObjectURL(upload.current.files[0])]);
   };
 
-  const handleImage = async (event) => {
+  const handleImage =  async (event) => {
     event.preventDefault();
     try {
       const file = upload.current.files[0];
@@ -31,6 +31,7 @@ const ImageInput = () => {
       alert('게시 실패!!');
     }
   };
+  
   return (
     <div className="div-image-container">
       <div className='div-title'>
