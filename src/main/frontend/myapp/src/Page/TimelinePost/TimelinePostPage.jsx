@@ -6,8 +6,7 @@ import AddReactionOutlinedIcon from '@mui/icons-material/AddReactionOutlined'; /
 import ChatBubbleOutlineOutlinedIcon from '@mui/icons-material/ChatBubbleOutlineOutlined'; //댓글
 //댓글창 이동
 import { useNavigate } from "react-router-dom";
-
-
+import "./TimelinePost.css"
 
 function Post ({post_id, userName, postTime, imageUrl}) {
     const navigate = useNavigate();

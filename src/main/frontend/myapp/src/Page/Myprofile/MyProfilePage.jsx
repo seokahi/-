@@ -3,7 +3,6 @@ import { Avatar } from '@mui/material'; //이름 프로필
 import './MyProfile.css';
 import NicknameModal from "./NicknameModal";
 import ConfirmModal from "./ConfirmModal";
-import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import axios from "axios";
 
 function MyProfile() {
@@ -12,6 +11,22 @@ function MyProfile() {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [editedName, setEditedName] = useState("");
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+
+    useEffect(() => {
+        axios.get("/api/myprofile")
+            .then(response => {
+                const sortedPosts = response.data.myPosts.sort((a, b) => b.post_id - a.post_id);
+                setMyPosts(sortedPosts);
+                setUser({
+                    name: response.data.userName,
+                    postCount: response.data.postCount
+                });
+            })
+            .catch(error => {
+                console.error("Error fetching posts:", error);
+            });
+    }, []);
+
 
     const handleEditClick = () => {
         setIsModalOpen(true);
