@@ -8,7 +8,14 @@ Modal.setAppElement("#root");
 function ConfirmModal({ isOpen, onRequestClose}) {
 
     const handleConfirm = async () => {
-        // api 받아올 예정
+      try {
+        await axios.post('/api/delete');
+        alert('회원탈퇴가 완료되었습니다!!');
+        window.location.href = "./?"
+      } catch (error) {
+        console.error('Error registering user:', error);
+        alert('회원탈퇴가 실패되었습니다!!');
+      }
       };
     
 
