@@ -49,3 +49,15 @@
 |  서버  |  기획  |   웹   |   웹   | 서버   | 웹     |
 
 <br>
+
+## 기술
+
+**1. 기술**
+
+- WEB: REACT , JAVASCRIPT
+- SERVER: SPRING BOOT
+  <br>
+
+**2. 제작 기간**: 2023.06 ~ 2023.08
+
+<br>
